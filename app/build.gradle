@@ -1,0 +1,53 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion Integer.parseInt(project.ANDROID_BUILD_SDK_VERSION)
+    buildToolsVersion project.ANDROID_BUILD_TOOLS_VERSION
+    defaultConfig {
+        applicationId "com.yf.androidmvp"
+        minSdkVersion project.ANDROID_BUILD_MIN_SDK_VERSION
+        targetSdkVersion project.ANDROID_BUILD_TARGET_SDK_VERSION
+        versionCode Integer.parseInt(project.VERSION_CODE)
+        versionName project.VERSION_NAME
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "androidx.appcompat:appcompat:${project.ANDROID_X_VERSION}"
+    implementation "androidx.percentlayout:percentlayout:${project.ANDROID_X_VERSION}"
+    implementation "androidx.recyclerview:recyclerview:${project.ANDROID_X_VERSION}"
+    implementation "androidx.cardview:cardview:${project.ANDROID_X_VERSION}"
+    implementation "com.google.android.material:material:${project.ANDROID_X_MATERIAL_VERSION}"
+    implementation "androidx.constraintlayout:constraintlayout:${project.CONSTRAINTLAYOUT_VERSION}"
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    //butterknife
+    api "com.jakewharton:butterknife:${project.BUTTERKNIFE_VERSION_CODE}"
+    annotationProcessor "com.jakewharton:butterknife-compiler:${project.BUTTERKNIFE_VERSION_CODE}"
+    // AndPermission
+    api "com.yanzhenjie:permission:${project.ANDPERMISSION_VERSION_CODE}"
+    //gson
+    api "com.google.code.gson:gson:${project.GSON_VERSION_CODE}"
+    // retrofit2 + rxjava2
+    api "com.squareup.retrofit2:retrofit:${project.RETROFIT_VERSION_CODE}"
+    api "com.squareup.retrofit2:converter-gson:${project.RETROFIT_VERSION_CODE}"
+    api "com.squareup.retrofit2:adapter-rxjava2:${project.RETROFIT_VERSION_CODE}"
+    api "io.reactivex.rxjava2:rxandroid:${project.RXANDROID_VERSION_CODE}"
+    api "io.reactivex.rxjava2:rxjava:${project.RXJAVA_VERSION_CODE}"
+    api 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+    api 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+}
